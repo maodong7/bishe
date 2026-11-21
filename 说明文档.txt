@@ -1,0 +1,16 @@
+运行此项目需要的windows前置环境配置和细节设置：
+装 VC++ 2015–2022 x64 
+→ 2. 装 Python 3.13 
+→ 3. 建 venv 并`pip install -r requirements.txt` （配国内镜像）
+→ 4. 设`PYTHONIOENCODING=utf-8` 、按需设`DEEPFACE_HOME` 和代理 
+→ 5. 确认`~/.deepface/weights/facial_expression_model_weights.h5` 存在（或能联网下载）
+→ 6. 放开 PowerShell 执行策略 
+→ 7. 确认 8000 端口空闲、项目目录可写 
+→ 8. Chrome/Edge 打开`http://127.0.0.1:8000` ，允许摄像头/麦克风。
+
+
+打开cmd或者powershell，以管理员运行
+cd "C:\Users\Administrator\Desktop\Career\shixi\Program\bishe\Web1"
+.\.venv\Scripts\python.exe main.py
+
+打开http://127.0.0.1:8000

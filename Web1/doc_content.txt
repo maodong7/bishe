@@ -1,0 +1,318 @@
+CN10 毕业设计 — 项目与论文全量总览
+（PPT / 终期答辩 / 归档交叉索引 · 自动汇总稿）
+
+本文档由脚本根据本地 Web1 工程、毕业设计论文目录及 CN10 Final portfolio 扫描生成，用于一次性掌握「代码事实 + 过程证据 + 论文交付物位置」。PDF 正文未做 OCR 内嵌，请在 Word 中配合超链接或资源管理器打开对应路径。
+0. 标准题目、产品名与演示入口
+毕业论文标准题目：Online Expression Recogniton System
+完整网站系统名称（英文）：Online Expression Recognition System · Psychological Therapy
+i18n 中文品牌（登录页等）：在线表情识别系统・心理辅助治疗
+线上演示入口：https://qxjc.fun/static/login.html
+本地完整归档（用户给定）：D:\桌面文档文件勿动！\Desktop\毕业设计最终项目
+论文根目录：D:\桌面文档文件勿动！\Desktop\毕业设计\论文
+主工程（开发源）：D:\桌面文档文件勿动！\Desktop\ProjectWeb1.0\Web1
+Portfolio 内嵌代码副本：D:\桌面文档文件勿动！\Desktop\毕业设计\论文\小组\CN10_Final portfolio\Project Code\Web1（与主工程应保持一致；以 Git/组长定稿为准）
+1. Portfolio 一级目录与文件规模
+
+2. Portfolio 内 PDF 交付物清单
+下列为 CN10_Final portfolio 下全部 PDF（共 45 个），相对路径便于答辩逐一点名。
+
+3. 个人与小组 Word 文档索引
+
+4. 组长 Reflective Report（BS_001）正文摘录
+源文件：D:\桌面文档文件勿动！\Desktop\毕业设计\论文\个人\Dongdong Mao\10356_080901_22H034160115_BS_001.docx
+Reflective Report
+
+R&D   Project Individual Report
+
+Abstract
+
+This reflective report examines my work as CN10 team lead on a real-time facial emotion recognition system. The effort moved from an early desktop-style prototype (mid-term materials) to a locally integrated web application. The stack combines FastAPI, WebSockets, SQLite with SQLAlchemy, and DeepFace-based inference.
+
+I assess fit with the original learning agreement. I discuss the product’s value for assistive use. I connect agile iteration with day-to-day real-time systems practice. I also trace my growth in full-stack engineering and team coordination.
+
+Acknowledgements
+
+On completing this reflective report, I sincerely thank all who supported the CN10 R&D project and my COMP704 learning.
+
+This reflective report covers my role as CN10 team lead on a real-time facial-emotion recognition system. The work evolved from an early desktop-style prototype in the mid-term materials to a locally integrated web application. The delivered stack pairs FastAPI and WebSockets with a SQLite/SQLAlchemy persistence layer and DeepFace-based inference. I evaluate alignment with the original learning agreement and the system’s assistive value. I relate agile iteration to concrete real-time engineering decisions. I also reflect on gains in full-stack development and team coordination.
+
+Thanks to my family for support during compressed deadlines.
+
+I also thank course staff and classmates/volunteers who tested early builds, as their questions improved the system.
+
+This milestone is a start, and I will deepen my engineering practice and critical judgement.
+
+Table of Contents
+
+Introduction
+
+CN10 is a browser-based facial affect pipeline: FastAPI, SQLite, and a WebSocket-first loop unifying inference, logging, and operator feedback. It stays assistive—faster review in supervised demos/labs, not a substitute for clinical or high-stakes judgement—so we bias toward latency headroom, conservative logging, and human oversight, not “full automation.”
+
+Project context and problem framing
+
+Camera access, HTTPS, and latency in integrated testing replaced early desktop narratives. That is evidence-led convergence to a demonstrable teaching web product, not abstract scope failure.
+
+Objectives and learning-agreement alignment
+
+As lead I owned persistence, inference-to-UI wiring, and cross-owner coordination (backlog, risks, deploy/docs windows). Web1 evidences this: SQLAlchemy models, JWT-scoped routes, /ws/{session_id} batching, static/ pages, and spreadsheet exports. Mapped artefacts: emotion_analysis.db, batched WebSocket commits, and the written division-of-labour note preserving requirement→commit traceability.
+
+Ethical stance on facial analytics
+
+Outputs implicate consent, retention, re-identification, and misuse outside a demo’s supervisory frame. Mitigations: authorised/synthetic data, auth, session scoping, minimal imagery vs labels/metrics/timestamps. Production needs ethics review / DPIA-style work / trained operators; here I state what the teaching build actually runs, not aspirational claims.
+
+Structure of this report
+
+I evaluate delivery, link practice to literature, reflect on integration leadership, and state forward commitments. Appendices A–G anchor Chinese archival evidence to main.py, handlers, and static/ so claims stay repo-checkable.
+
+Project evaluation
+
+Planned versus delivered
+
+The proposal trajectory emphasised seven basic emotions, DeepFace-assisted inference, and repeatable demonstrations that could survive scrutiny in a live lab rather than in a slideshow alone. Delivered behaviour therefore spans the full operator arc: registration and token issuance; session lifecycle APIs that create, resume, and close runs cleanly; questionnaire persistence so teaching artefacts are not lost between refreshes; recording metadata that ties timestamps to decisions; screenshot capture for visual evidence; Excel exports that support spreadsheet-first moderation workflows; and the real-time overlay loop with disgust-aware smoothing parameters that were tuned from what we actually observed during trials rather than from a static parameter table copied from a tutorial.
+
+Mid-term mentor pressure on UI stalls and SQLite stability translated into concrete engineering responses rather than cosmetic fixes: batching with three-frame commits to reduce synchronous write pressure in the hot path; JPEG quality trade-offs on uplink that traded marginal visual fidelity for predictable frame delivery; and clearer operator flows on static pages so the “happy path” could be executed under time pressure without hidden prerequisites.
+
+Mid-term pivot and engineering backlog
+
+The backlog lived as a short, dated list tied to mentor comments, which kept scope honest and prevented vague “we will improve performance” promises from displacing verifiable work. Representative items included reducing synchronous writes in the hot path; clarifying patient_id contracts between UI and API so identifiers were not silently reinterpreted across layers; and documenting Haar cascade paths for Windows deployments so environment-specific failures did not become private folklore carried by one machine. Closing those items was an explicit condition for calling the local integration “done,” because each item removed a class of integration failure that would otherwise reappear during demonstrations.
+
+Short-term significance for the course client
+
+For markers, the short-term significance is operational: they can authenticate, run a session, stream frames, observe annotated previews, export an Excel workbook, and cite repository paths when asking follow-up questions. That combination reads as engineering depth rather than a throwaway demo, because it demonstrates persistence, security boundaries, real-time behaviour, and an audit trail in a form markers already know how to evaluate.
+
+Long-term significance and deployment path
+
+The FastAPI monolith can still be handed off to Linux, Nginx, and secure WebSocket (wss) work led by a teammate. The teaching demo and a serious deployment story are different goals. They should still describe the same system without conflict.
+
+We kept local integration separate from public operations. That cut single-person dependency. It also kept joint troubleshooting possible when logs crossed environments.
+
+We shared stable terms—routes, the WebSocket loop, export endpoints—so triage stayed coherent. Hardening for public exposure remained with the operations owner.
+
+Limitations and honest claims
+
+Low light, occlusion, and crowd density remain accuracy risks that no responsible write-up should minimise behind brand language. Exports are pragmatic—useful for review—rather than standards-complete in the sense of a regulated clinical data interchange package. CORS policies and secret rotation need further hardening before any exposure beyond controlled networks. These limits shape how I would communicate with any stakeholder beyond the classroom: I would lead with constraints, evidence, and operational controls rather than with aspirational precision claims the stack cannot substantiate.
+
+Evidence chain and traceability
+
+Claims in this report map to symbols in Web1: ORM classes and routes in main.py, static HTML/JS under static/, and generated schematic figures in appendices. That mapping is intentional so moderators can falsify statements quickly—either the artefact exists at the referenced path with the described behaviour, or the claim should be revised. Traceability is therefore not a stylistic preference but a review strategy aligned with how engineering evidence is actually checked under time pressure.
+
+Link between theory and practice
+
+This section connects course readings to what I implemented in Web1 (main.py, SQLAlchemy models, static/), so claims stay checkable for review rather than ornamental citations.
+
+Agile iteration and vertical slices
+
+Weekly work favoured vertical slices—OAuth2 password flow + JWT on REST (OAuth2PasswordBearer with tokenUrl="/api/auth/token") → session lifecycle endpoints (/api/sessions, /api/sessions/{id}/end) → /ws/{session_id} → SQLite persistence and spreadsheet exports—over a single end-of-term merge. Each slice had to leave a demo-grade path: register/login, create a session under Depends(get_current_user), then stream frames that optionally carry question_id / question_text, and finally download audit data via GET /api/sessions/export/excel or GET /api/sessions/{session_id}/export/excel (pandas / openpyxl). That matches working software as progress (Beck et al., 2001) and early integration to reduce risk (Sommerville, 2016).
+
+Real-time systems and WebSocket design
+
+The WebSocket loop is a producer–consumer path between browser frames and server inference. Fielding (2000) explains why REST alone is poor for latency-sensitive media; here, decode → inference → cv2.imencode('.jpg', ..., IMWRITE_JPEG_QUALITY 70) → send_text is one cohesive handler, not a stateless REST chain. Security is layered: REST mutations require a bearer token, while websocket_endpoint accepts the socket then verifies session_id is present in active_sessions—so the real-time path depends on a session created through authenticated APIs. The handler also keeps one long-lived SessionLocal() per connection to amortise ORM overhead across many frames.
+
+Machine-learning pipeline and smoothing heuristics
+
+DeepFace links research models to classroom constraints (Taigman et al., 2014). Web1 uses Haar localisation (configured cascade path in-repo), check_face_quality (Laplacian/brightness/contrast gates), DeepFace.analyze with detector_backend='skip' on the ROI, and mtcnn fallback on the full frame if Haar misses—where face_area_ratio must fall between 0.10 and 0.80 before trusting the MTCNN region. get_smoothed_emotion runs when session_id is not None and raw confidence > 40, maintaining a five-frame buffer per session and applying DISGUST_* rules to reduce disgust–neutral flicker—probabilis…
+（以下省略）
+5. 其他成员 Word 文档（仅路径说明）
+除 BS_001 外的 论文/个人 下 docx：
+· 个人\lmh\Reflective Report_lmh.docx
+· 个人\sxl\Reflective Report.docx
+· 个人\yyc\individual report_Yichen Ye.docx
+6. 会议纪要全表（CN10，Markdown 源）
+
+7. 全局事件系统说明（Portfolio Web1 文本节选）
+Web1 Global Event System Documentation (Frontend)
+================================Description: This document structure follows the writing standard for Global Event System Documentation, facilitating code reference during handovers and defense presentations.
+Web1 is a web application for emotion recognition, questionnaire surveys, and backend management; it does not include turn-based global buff mechanics found in board games.
+The term global events herein refers to:
+DOM-level global events broadcast on the browser window (window) and responded to by scripts across multiple pages;
+Session-level WebSocket message streams, which are distinguished from DOM events (see Section 7).
+1. Implemented Global Events: Content and Ownership
+Event Name: app:langchange (CustomEvent, mounted on window)
+Event Payload (detail):
+detail.lang: 'zh' or 'en', indicating the switched UI language.
+Publisher (Single Authoritative Entry):
+File: static/i18n.js
+Function: I18N.setLang(lang)
+Key Execution Sequence: Write to localStorage (key: app_ui_lang) → Set document.documentElement.lang → Refresh nodes with data-i18n* attributes via applyDom(document) → Execute updateLangButtons() → Finally dispatch window.dispatchEvent(new CustomEvent('app:langchange', { detail: { lang } }))
+Subscribers and Their Responsibilities (only listen to window, no duplicate dispatching):
+static/login.html: Updates document.title (login/register page title) after language switching.
+static/index.html: Updates the main function page document.title after language switching; refreshes chart text/legends (refreshChartsLocale or syncEmotionLabels); refreshes dynamically rendered UI elements such as the "Next Question" button and recording button; restores the export button HTML (setExportButtonIdle) if the button is not in a loading state.
+static/admin.html: Two event listeners: (1) Update the backend page document.title; (2) Execute renderPatients() if the patient list is loaded to synchronize the dynamically generated Chinese/English text in the list with the current language.
+2. Trigger Boundaries (Allowed vs. Disallowed Triggers)
+Only allowed to trigger app:langchange indirectly: when users click buttons with the data-lang-btn="zh|en" attribute, the click callback bound in i18n.js invokes I18N.setLang.
+Not recommended for business pages to directly call dispatchEvent('app:langchange'): This may cause inconsistent execution order with applyDom or duplicate refreshes. If necessary, use I18N.setLang uniformly or ensure compliance with conventions defined in i18n.js.
+Invalid lang parameters in setLang trigger an immediate return without event dispatching, preventing invalid state propagation.
+3. Differences from Turn/Round-Based Global Rules
+This project does not implement mechanics such as "global skill triggers at round N".
+Language switching takes effect immediately: When language is switched via setLang at any time, all page data-i18n* elements and the aforementioned subscription logic update within the same event cycle.
+4. Effect Verification and Linkage Points (Implementation Conventions)
+Static DOM: Nodes using data-i18n, data-i18n-placeholder, data-i18n-title, and data-i18n-html are refreshed uniformly by applyDom. No manual app:langchange listener is required (unless additional custom logic is needed).
+Dynamic DOM (text rendered via innerHTML / textContent at runtime): Must be re-rendered using I18N(...) in the app:langchange callback. Failure to do so will cause inconsistencies (e.g., English buttons with Chinese chart titles). Examples in index.html include charts, the next question button, recording button, and export button.
+Backend List: Patient cards in admin.html are dynamically generated by renderPatients(). Thus, renderPatients() is executed conditionally (only when patient data exists) after language changes to avoid unnecessary re-rendering with empty data.
+5. Security and Consistency Notes
+app:langchange does not contain tokens or private data. Language preferences are stored only in the local localStorage.
+Cross-Page Consistency: All static pages reference the same i18n.js and STORAGE_KEY. When any page is reloaded, I18N.initPage() restores the language from localStorage, aligning with the result of the last app:langchange event.
+6. Known Considerations / Historical Fixes (Event-Related)
+Questionnaire "Next Question" Button: Only bound with onclick in showQuestion / nextQuestion. Do not add an additional addEventListener('click', ...) to this button, as it will trigger duplicate clicks and skip questions (e.g., from Question 1 directly to Question 3). This convention is documented in index.html and is tightly coupled with global UI state management.
+Export Button: Displays a spinner during export. If an export is in progress during language switching, the button state must not be overwritten incorrectly. The app:langchange callback includes a check: setExportButtonIdle is only executed when no spinner is active, preventing the button from being stuck on "Exporting…".
+Separation of WebSocket and Global Events: Real-time emotion frame transmission uses WebSocket, with server-side JSON field type === 'frame' (see onmessage in main.py and index.html). This channel does not belong to window custom global events, and app:langchange must not be used to dispatch frame data.
+7. Maintenance Recommendations
+To add Chinese-English switching for a new static page:
+Import i18n.js;
+Call I18N.initPage() on page load;
+Add complete data-i18n* attributes to text nodes;
+For dynamic content, add window.addEventListener('app:langchange', ...) with logic consistent with index.html.
+When modifying the event name or detail structure:Synchronize changes in i18n.js and all pages with addEventListener('app:langchange'), and perform a full-text search for app:langchange to ensure consistency.
+
+
+Web1 全局事件系统说明（前端）
+================================
+说明：本文件结构参考「全局事件系统说明」类文档写法，便于交接与答辩时对照代码。
+Web1 为情绪识别 / 问卷 / 后台管理类 Web 应用，无桌游式「回合全局 Buff」；
+此处「全局事件」指：在浏览器窗口（window）上广播、多页面脚本共同响应的 **DOM 级全局事件**，
+以及与之区分的 **会话级 WebSocket 消息流**（见第 7 节）。
+
+一、已实现的全局事件：内容与归属
+--------------------------------
+1. 事件名：`app:langchange`（CustomEvent，挂载在 `window`）
+
+2. 事件载荷（detail）：
+   - `detail.lang`：`'zh'` 或 `'en'`，表示切换后的界面语言。
+
+3. 发布方（唯一权威入口）：
+   - 文件：`static/i18n.js`
+   - 函数：`I18N.setLang(lang)`
+   - 行为顺序要点：写入 `localStorage`（键名 `app_ui_lang`）→ 设置 `document.documentElement.lang`
+     → `applyDom(document)` 刷新带 `data-i18n*` 的节点 → `updateLangButtons()` → **最后**
+     `window.dispatchEvent(new CustomEvent('app:langchange', { detail: { lang } }))`
+
+4. 订阅方与各自职责（仅监听 `window`，不重复派发）：
+   - `static/login.html`：切换语言后更新 `document.title`（登录/注册页标题）。
+   - `static/index.html`：切换语言后更新主功能页 `document.title`；刷新图表区域文案/图例（`refreshChartsLocale` 或 `syncEmotionLabels`）；刷新「下一题」按钮与录音按钮等 **由脚本动态写入** 的 UI；若导出按钮非加载中状态则恢复导出按钮 HTML（`setExportButtonIdle`）。
+   - `static/admin.html`：共两处监听——(1) 更新后台页 `document.title`；(2) 若已加载患者列表则 `renderPatients()`，使列表内动态生成的中文/英文与当前语言一致。
+
+二、触发边界（谁能触发、谁不能）
+--------------------------------
+1. **仅允许**通过用户点击带 `data-lang-btn="zh|en"` 的按钮，经 `i18n.js` 内绑定的 click 回调调用 `I18N.setLang` 间接触发 `app:langchange`。
+
+2. **不建议**业务页面自行 `dispatchEvent('app:langchange')`：易造成与 `applyDom` 顺序不一致或重复刷新；若确有需要，应先统一走 `I18N.setLang` 或至少保证已与 `i18n.js` 约定一致。
+
+3. `setLang` 内对非法 `lang` 直接 `return`，不会派发事件，避免脏状态。
+
+三、与「回合/轮次」类全局规则的区别
+--------------------------------
+- 本项目无「第 N 轮触发某角色全局技能」类规则。
+- 语言切换为 **即时生效**：任意时刻切换语言，只要走了 `setLang`，全页 `data-i18n*` 与上述订阅逻辑即在同一事件周期内更新。
+
+四、效果检查与联动点（实现层约定）
+--------------------------------
+1. **静态 DOM**：凡使用 `data-i18n`、`data-i18n-placeholder`、`data-i18n-title`、`data-i18n-html` 的节点，由 `applyDom` 统一刷新，**无需**再手写监听 `app:langchange`（除非有额外逻辑）。
+
+2. **动态 DOM**（运行时 `innerHTML` / `textContent` 写入的文案）：必须在 `app:langchange` 回调里用 `I18N.t(...)` 重刷，否则会出现「按钮已切英文、图表标题仍中文」等不一致。`index.html` 中的图表、下一题按钮、录音按钮、导出按钮即属此类。
+
+3. **后台列表**：`admin.html` 中患者卡片为 `renderPatients()` 动态生成，故在语言变更后需 **有条件地** `renderPatients()`（已有患者数据时），避免空数据无意义重绘。
+
+五、安全与一致性说明
+--------------------------------
+1. `app:langchange` 不包含令牌或隐私数据；语言偏好仅存于本机 `localStorage`。
+
+2. 跨页一致性：各静态页均引用同一 `i18n.js` 与同一 `STORAGE_KEY`，重新打开任意页面时 `I18N.initPage()` 会按 `localStorage` 恢复语言，与上次 `app:langchange` 结果一致。
+
+六、已知注意事项 / 历史修复类约定（与事件周边相关）
+--------------------------------
+1. **问卷「下一题」按钮**：仅用 `showQuestion` / `nextQuestion` 内设置的 `onclick` 绑定，**勿**对「下一题」按钮再 `addEventListener('click', ...)`，否则会导致一次点击触发两次、出现跳题（例如从第 1 题直接到第 3 题）。该约定写在 `index.html` 注释中，与全局 UI 状态强相关。
+
+2. **导出按钮**：导出过程中会显示 spinner；语言切换时若仍在导出中，不应错误覆盖按钮状态——`app:langchange` 内对导出按钮做了「无 spinner 才 `setExportButtonIdle`」的判断，避免卡在「Exporting…」。
+
+3. **WebSocket 与全局事件分离**：实时情绪帧回传使用 `WebSocket`，服务端 JSON 字段 `type === 'frame'`（见 `main.py` 与 `index.html` 的 `onmessage`）。该链路 **不属于** `window` 上的全局自定义事件，也不应混用 `app:langchange` 派发帧数据。
+
+七、维护建议
+--------------------------------
+新增静态页若需中英切换：引入 `i18n.js` → 页面加载调用 `I18N.initPage()` → 为文案节点补全 `data-i18n*` → 若有动态片段，增加 `window.addEventListener('app:langchange', ...)` 与 `index.html` 同类处理。
+
+修改事件名或 detail 结构时：必须同步修改 `i18n.js` 与所有 `addEventListener('app:langchange')` 页面，并全文检索 `app:langchange`。
+
+
+
+7b. 毕业设计最终项目目录（若已归档）
+（目录不存在或未挂载：D:\桌面文档文件勿动！\Desktop\毕业设计最终项目）
+8. 技术栈（requirements.txt 双份对照）
+主工程 Web1: D:\桌面文档文件勿动！\Desktop\ProjectWeb1.0\Web1\requirements.txt
+fastapi
+uvicorn[standard]
+opencv-python
+deepface
+tensorflow
+tf-keras
+pydantic
+pydantic-settings
+websockets
+sqlalchemy
+python-multipart
+matplotlib
+pandas
+openpyxl
+fpdf
+python-jose[cryptography]
+passlib[bcrypt]
+speechrecognition
+pyaudio
+dlib
+mediapipe
+Portfolio 副本: D:\桌面文档文件勿动！\Desktop\毕业设计\论文\小组\CN10_Final portfolio\Project Code\Web1\requirements.txt
+fastapi
+uvicorn[standard]
+opencv-python
+deepface
+tensorflow
+tf-keras
+pydantic
+pydantic-settings
+websockets
+sqlalchemy
+python-multipart
+matplotlib
+pandas
+openpyxl
+xlsxwriter
+fpdf
+python-jose[cryptography]
+passlib[bcrypt]
+speechrecognition
+pyaudio
+dlib
+mediapipe
+9. 后端模块与路由（main.py 事实）
+
+10. 数据库 ORM 字段级摘要
+
+11. 推理链与平滑
+OpenCV Haar + 均衡灰度 → 最大脸外扩 ROI → check_face_quality（Laplacian/亮度/对比度） → DeepFace.analyze（skip 或全帧 MTCNN 回退）→ get_smoothed_emotion（FIFO + disgust 启发式）。
+视频离线处理：recognize_emotion(..., session_id=None) 不使用会话平滑；按帧间隔抽样。
+12. 前端功能模块（index / admin / login）
+· 登录/注册：localStorage 保存 access_token；跳转主界面。
+· 主界面 index：患者 ID 输入、开始/停止会话、截图、录音、音频导出、视频上传分析入口。
+· 双 Canvas：video-feed 展示、video-canvas 离屏捕获；WebSocket 推帧与收帧。
+· 问卷：进度条、上一题/下一题、选项容器动态渲染；编辑问卷 Modal + POST /api/questions。
+· 统计：饼图/折线图（Chart.js）、dominant emotion、FPS 显示。
+· 导出：Excel 按钮；全量/单会话后端 StreamingResponse。
+· 语音识别：状态区 + 文本区 + 保存到会话。
+· AI 分析 Modal：患者选择、可编辑 prompt、调用 POST /api/ai/analyze 展示报告。
+· 后台 admin：患者列表、删除单患者/全部、会话详情拉取。
+· i18n：i18n.js — 中英 PACK，login/index.admin 中文产品名「在线表情识别系统・心理辅助治疗」；window 派发 app:langchange。
+· HTML <title>：index 为 Onile…（拼写笔误）；与 i18n 中文品牌「在线…」并存，答辩时可说明将统一为 Online + Recognition。
+13. 运行、部署与运维关键词
+本地：uvicorn main:app --reload（具体参数以小组 README 为准）。
+公网：nginx TLS 反代；WebSocket Upgrade/Connection；Menghao 纪要中 502/upstream 排查；systemd + journalctl 演练。
+运行时目录：screenshots/、videos/、emotion_analysis.db 于工作目录。
+14. 安全、伦理与技术债
+
+15. 答辩时间结构（与 PPT 一致）
+
+16. Client Handover 与其他 Portfolio 子项（仅路径）
+· D:\桌面文档文件勿动！\Desktop\毕业设计\论文\小组\CN10_Final portfolio\Client Handover\Client Handover Document.pdf
+· （未找到）Teamwork and Communication/Team Contract.pdf
+· （未找到）Development Activities & Quality Assurance/Designs -UI, Architecture, and Persistent Data.pdf
+· D:\桌面文档文件勿动！\Desktop\毕业设计\论文\小组\CN10_Final portfolio\Research & Upskilling\Research\Project Development Method Research.pdf
+17. 修订记录
+2026-05-07：Word 初版。2026-05-07：极致丰富版 — 自动并入 Portfolio PDF 清单、会议纪要表、Reflective 摘录、全局事件说明、双份 requirements、前后端模块详单、路径索引。
